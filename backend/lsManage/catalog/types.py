@@ -1,8 +1,5 @@
-from dataclasses import field
-from typing_extensions import Required
 import graphene
-from graphene_django import DjangoObjectType
-
+from graphene_django.types import DjangoObjectType
 from products.models import Product
 
 class ProductType(DjangoObjectType):
@@ -22,5 +19,3 @@ class Query(graphene.ObjectType):
             return Product.objects.get(sku=sku)
         except Product.DoesNotExist:
             return None
-
-schema = graphene.Schema(query=Query)
