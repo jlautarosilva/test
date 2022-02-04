@@ -1,0 +1,1 @@
+[{"model": "products.product", "pk": 1, "fields": {"sku": "AWEF1234", "name": "Tecla hidraulico", "price": 999999.0}}, {"model": "products.product", "pk": 2, "fields": {"sku": "ASDF9876", "name": "Hyundai Creta", "price": 6900000.0}}, {"model": "products.product", "pk": 3, "fields": {"sku": "HY99123#9", "name": "GPS Garmin MAP 65", "price": 500000.0}}]
