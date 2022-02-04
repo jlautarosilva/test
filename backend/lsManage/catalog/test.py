@@ -4,7 +4,7 @@ from catalog.schema import schema
 from django.test.testcases import TestCase
 import graphene
 
-class allProductsTest(TestCase):
+class productsTest(TestCase):
     def testAllProducts(self):
         query = """
             query {
@@ -17,10 +17,13 @@ class allProductsTest(TestCase):
         result = schema.execute(query)
         assert not result.errors
 
-    def testMutations(self):
+    def testCreateProductAnonymus(self):
         query = """
             mutation{
-              createProduct(name:"Juan Valez", sku:"CAFE000001", price: 5000.00){
+              createProduct(
+                name:"Juan Valez"
+                sku:"CAFE000001"
+                price: 5000.00){
                 name{
                   name
                 }
@@ -28,7 +31,7 @@ class allProductsTest(TestCase):
             }
         """
         result = schema.execute(query)
-        assert not result.errors
+        assert result.errors
 
     def testBySKU(self):
         query = """

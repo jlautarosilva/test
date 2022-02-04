@@ -1,11 +1,14 @@
 import graphene
 from .types import Query as SchemeQuery
-from .mutations import Mutation as SchemaMutation
+from .mutations import ProductMutation, AuthMutation
 
-class Query(SchemeQuery, graphene.ObjectType):
+#imports for graphql_auth
+from graphql_auth.schema import UserQuery, MeQuery
+
+class Query(UserQuery, SchemeQuery, graphene.ObjectType):
     pass
 
-class Mutation(SchemaMutation, graphene.ObjectType):
+class Mutation(ProductMutation, AuthMutation, graphene.ObjectType):
     pass
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
