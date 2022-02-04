@@ -21,7 +21,7 @@ class productsTest(TestCase):
         query = """
             mutation{
               createProduct(
-                name:"Juan Valez"
+                name:"Juan Valdez"
                 sku:"CAFE000001"
                 price: 5000.00){
                 name{
