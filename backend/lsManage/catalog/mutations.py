@@ -1,9 +1,9 @@
-from email import message
-from itertools import product
+
 import graphene
 from products.models import *
 from .types import *
 from graphql_auth import mutations
+from .email import emailAdmins
 
 #Graphene CREATE mutation definition
 class CreateProductMutation(graphene.Mutation):
@@ -23,7 +23,8 @@ class CreateProductMutation(graphene.Mutation):
             price = kwargs.get('price',0)
 
             obj = Product.objects.create(sku=sku, name=name, price=price)
-
+            mensaje = "A new products was created! \n SKU: %s \n NAME: %s \n PRICE: %s"%(sku,name,price)
+            emailAdmins(mensaje)
             return CreateProductMutation(name=obj)
         else:
             return None
@@ -47,6 +48,8 @@ class UpdateProductMutation(graphene.Mutation):
             product.name = name
             product.price = price
             product.save()
+            mensaje = "A product was updated! \n SKU: %s \n NAME: %s \n PRICE: %s"%(sku,name,price)
+            emailAdmins(mensaje)
             return UpdateProductMutation(product=product)
         else:
             None
@@ -64,6 +67,8 @@ class DeleteProductMutation(graphene.Mutation):
         if info.context.user.is_authenticated:
             product = Product.objects.get(pk=id)
             product.delete()
+            mensaje = "A product was deleted :'(  \n ID: %s "%(id)
+            emailAdmins(mensaje)
             return cls(id=id, message='deleted')
         else:
             None
