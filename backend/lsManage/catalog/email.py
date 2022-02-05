@@ -11,5 +11,5 @@ def emailAdmins(message):
     send_mail(
         subject="OUR PRODUCTS ARE MUTATING!!!",
         message=message,
-        from_email="test@test.cl",
+        from_email="jlautarosilva@gmail.com",
         recipient_list=admins)

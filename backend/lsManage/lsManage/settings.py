@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t-r4^_@t&y(fu&zn&&m+io44ejbs7(_!0!jh$xjj(%k^r6o90#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -159,4 +159,7 @@ GRAPHQL_JWT = {
     ],
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_ACCESS_KEY_ID = 'AKIARMCKKQDP62J4U74E'
+AWS_SECRET_ACCESS_KEY = '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'
