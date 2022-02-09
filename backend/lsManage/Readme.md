@@ -14,7 +14,7 @@ Each component live in an independent django application, this are:
 - products: Product django application
 - catalog: GraphQL catalog service for manage Users and Products
 
-Future enhacement
+Future enhancement
 - Decoupling email as an independent django app
 - Implement separated settings.py files for local and server
 - Implement more functionality to the models as:
